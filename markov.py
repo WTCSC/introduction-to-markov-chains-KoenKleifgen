@@ -129,14 +129,16 @@ They stopped at the corner, Betsy declaring she could not go a step further; the
 """
 transitions = {}
 
-alfa = "abcdefghijklmnopqrstuvwxys"
+text = "".join(c for c in text if c.isalpha() or c.isspace())
+
+
+text = text.lower()
 words = text.split()
+
 for i in range(len(words) - 1):
     current_word = words[i]
     next_word = words[i + 1]
     if current_word not in transitions:
-        transitions[current_word] = []
-    if i in words not in alfa:
         transitions[current_word] = []
     transitions[current_word].append(next_word)
 
@@ -152,4 +154,4 @@ def generate_text(start_word, num_words):
             break
     return " ".join(result)
 
-print(generate_text("The", 100))
+print(generate_text("the", 123))
